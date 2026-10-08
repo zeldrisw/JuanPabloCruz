@@ -1,0 +1,174 @@
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
+  padding-bottom: 50px;
+}
+
+/* ==========================================
+   BANNER 1: CON BOTONES
+   ========================================== */
+.banner-principal {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 400px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-principal .banner-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.banner-principal .overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.5); /* Capa oscura para contrastar texto */
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 800px;
+  width: 90%;
+}
+
+.banner-principal h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.banner-principal p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+}
+
+/* Botones del Banner 1 */
+.button-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-primary {
+  background-color: #0066ff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #0052cc;
+}
+
+.btn-secondary {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #218838;
+}
+
+.btn-outline {
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.btn-outline:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+/* ==========================================
+   BANNERS 2 AL 5: CARRUSELES CON CSS PURO
+   ========================================== */
+.banner-carousel-container {
+  max-width: 1200px;
+  margin: 40px auto 0 auto;
+  padding: 0 20px;
+}
+
+.banner-carousel-container h2 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: #222;
+}
+
+.carousel {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 15px;
+}
+
+/* Ocultar barra de desplazamiento para un acabado limpio */
+.carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 15px;
+}
+
+.carousel-slide {
+  flex: 0 0 calc(33.333% - 10px); /* Muestra 3 imágenes a la vez en PC */
+  scroll-snap-align: start;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.carousel-slide img:hover {
+  transform: scale(1.04);
+}
+
+/* RESPONSIVE PARA DISPOSITIVOS MÓVILES */
+@media (max-width: 768px) {
+  .carousel-slide {
+    flex: 0 0 calc(80% - 10px); /* En móviles muestra casi 1 elemento con vista previa del siguiente */
+  }
+
+  .banner-principal h1 {
+    font-size: 1.8rem;
+  }
+}
