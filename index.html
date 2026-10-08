@@ -3,81 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página con Banners y Carruseles</title>
+  <meta name="theme-color" content="#eef4f8">
+  <title>Juan Pablo Cruz | El progreso se construye con obras</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <main>
+    <nav class="quick-links" aria-label="Secciones principales">
+      <button class="quick-link quick-link-about" type="button" aria-label="Abrir documento: Quién soy" data-pdf="documentos/quien-soy.pdf" data-title="Quién soy"></button>
+      <button class="quick-link quick-link-work" type="button" aria-label="Abrir documento: Gestión" data-pdf="documentos/gestion.pdf" data-title="Gestión"></button>
+      <a class="quick-link quick-link-proposals" href="#propuestas" aria-label="Propuestas"></a>
+    </nav>
 
-  <!-- BANNER 1: Banner Principal con Botones -->
-  <section class="banner banner-principal">
-    <!-- Cambia la ruta por tu imagen principal -->
-    <img src="https://via.placeholder.com/1200x500" alt="Banner Principal" class="banner-img">
-    <div class="overlay">
-      <h1>Bienvenido a Nuestro Sitio</h1>
-      <p>Descubre todo lo que tenemos para ofrecerte</p>
-      <div class="button-group">
-        <a href="#" class="btn btn-primary">Explorar</a>
-        <a href="#" class="btn btn-secondary">Contactar</a>
-        <a href="#" class="btn btn-outline">Saber Más</a>
+    <section class="hero" aria-label="El progreso se construye con obras">
+      <img class="hero-slide" src="images/banner-1.jpg" alt="Juan Pablo Cruz saluda junto a obras de construcción">
+      <img class="hero-slide" src="images/banner-2.jpg" alt="Juan Pablo Cruz junto a una carretera en construcción">
+      <img class="hero-slide" src="images/banner-3.jpg" alt="Juan Pablo Cruz junto a maquinaria que construye una carretera">
+    </section>
+
+    <dialog class="pdf-dialog" aria-labelledby="pdf-title">
+      <div class="pdf-toolbar">
+        <h2 id="pdf-title">Documento</h2>
+        <div class="pdf-actions">
+          <a class="pdf-open-link" href="#" target="_blank" rel="noopener">Abrir en otra pestaña</a>
+          <button class="pdf-close" type="button">Cerrar</button>
+        </div>
       </div>
-    </div>
-  </section>
+      <iframe class="pdf-frame" title="Documento PDF"></iframe>
+    </dialog>
+  </main>
 
-  <!-- BANNER 2: Carrusel 1 -->
-  <section class="banner-carousel-container">
-    <h2>Nuestros Productos</h2>
-    <div class="carousel">
-      <div class="carousel-track">
-        <!-- Reemplaza con tus imágenes -->
-        <div class="carousel-slide"><img src="https://via.placeholder.com/400x250/3357FF/FFFFFF?text=Imagen+1" alt="Slider 1-1"></div>
-        <div class="carousel-slide"><img src="https://via.placeholder.com/400x250/33FF57/FFFFFF?text=Imagen+2" alt="Slider 1-2"></div>
-        <div class="carousel-slide"><img src="https://via.placeholder.com/400x250/FF5733/FFFFFF?text=Imagen+3" alt="Slider 1-3"></div>
-        <div class="carousel-slide"><img src="https://via.placeholder.com/400x250/F033FF/FFFFFF?text=Imagen+4" alt="Slider 1-4"></div>
-      </div>
-    </div>
-  </section>
+  <script>
+    const pdfDialog = document.querySelector(".pdf-dialog");
+    const pdfFrame = document.querySelector(".pdf-frame");
+    const pdfTitle = document.querySelector("#pdf-title");
+    const pdfOpenLink = document.querySelector(".pdf-open-link");
 
-  <!-- BANNER 3: Carrusel 2 -->
-  <section class="banner-carousel-container">
-    <h2>Servicios Destacados</h2>
-    <div class="carousel">
-      <div class="carousel-track">
-        <!-- Reemplaza con tus imágenes -->
-        <div class="carousel-slide"><img src="https://via.placeholder.com/400x250/FFC300/333333?text=Servicio+1" alt="Slider 2-1"></div>
-        <div class="carousel-slide"><img src="https://via.placeholder.com/400x250/DAF7A6/333333?text=Servicio+2" alt="Slider 2-2"></div>
-        <div class="carousel-slide"><img src="https://via.placeholder.com/400x250/581845/FFFFFF?text=Servicio+3" alt="Slider 2-3"></div>
-        <div class="carousel-slide"><img src="https://via.placeholder.com/400x250/900C3F/FFFFFF?text=Servicio+4" alt="Slider 2-4"></div>
-      </div>
-    </div>
-  </section>
+    document.querySelectorAll("[data-pdf]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const { pdf, title } = button.dataset;
+        pdfTitle.textContent = title;
+        pdfFrame.title = title;
+        pdfFrame.src = pdf;
+        pdfOpenLink.href = pdf;
+        pdfDialog.showModal();
+      });
+    });
 
-  <!-- BANNER 4: Carrusel 3 -->
-  <section class="banner-carousel-container">
-    <h2>Galería de Galardones</h2>
-    <div class="carousel">
-      <div class="carousel-track">
-        <!-- Reemplaza con tus imágenes -->
-        <div class="carousel-slide"><img src="https://via.placeholder.com/400x250/1C2833/FFFFFF?text=Logro+1" alt="Slider 3-1"></div>
-        <div class="carousel-slide"><img src="https://via.placeholder.com/400x250/28B463/FFFFFF?text=Logro+2" alt="Slider 3-2"></div>
-        <div class="carousel-slide"><img src="https://via.placeholder.com/400x250/B7950B/FFFFFF?text=Logro+3" alt="Slider 3-3"></div>
-        <div class="carousel-slide"><img src="https://via.placeholder.com/400x250/8E44AD/FFFFFF?text=Logro+4" alt="Slider 3-4"></div>
-      </div>
-    </div>
-  </section>
+    document.querySelector(".pdf-close").addEventListener("click", () => {
+      pdfDialog.close();
+    });
 
-  <!-- BANNER 5: Carrusel 4 -->
-  <section class="banner-carousel-container">
-    <h2>Marcas e Integraciones</h2>
-    <div class="carousel">
-      <div class="carousel-track">
-        <!-- Reemplaza con tus imágenes -->
-        <div class="carousel-slide"><img src="https://via.placeholder.com/400x250/117A65/FFFFFF?text=Marca+1" alt="Slider 4-1"></div>
-        <div class="carousel-slide"><img src="https://via.placeholder.com/400x250/A6ACAF/333333?text=Marca+2" alt="Slider 4-2"></div>
-        <div class="carousel-slide"><img src="https://via.placeholder.com/400x250/D35400/FFFFFF?text=Marca+3" alt="Slider 4-3"></div>
-        <div class="carousel-slide"><img src="https://via.placeholder.com/400x250/2E4053/FFFFFF?text=Marca+4" alt="Slider 4-4"></div>
-      </div>
-    </div>
-  </section>
-
+    pdfDialog.addEventListener("close", () => {
+      pdfFrame.removeAttribute("src");
+    });
+  </script>
 </body>
 </html>
