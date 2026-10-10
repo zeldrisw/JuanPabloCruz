@@ -114,6 +114,95 @@ body {
   outline-offset: 4px;
 }
 
+.section-eyebrow {
+  margin: 0 0 8px;
+  color: #287cac;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.proposal-title {
+  color: #103b70;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.proposal-subtitle {
+  color: #61778a;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.proposal-picker {
+  width: min(calc(100% - 32px), 620px);
+  max-height: min(85vh, 700px);
+  padding: 24px;
+  overflow-y: auto;
+  border: 0;
+  border-radius: 16px;
+  color: #17324d;
+  box-shadow: 0 20px 60px rgba(5, 25, 45, 0.35);
+  animation: dialog-appear 260ms ease-out;
+}
+
+.proposal-picker::backdrop {
+  background: rgba(4, 20, 36, 0.72);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  animation: backdrop-appear 260ms ease-out;
+}
+
+.picker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.picker-header .section-eyebrow {
+  margin-bottom: 5px;
+}
+
+.picker-header h2 {
+  margin: 0;
+  color: #103b70;
+  font-size: clamp(1.25rem, 4vw, 1.7rem);
+}
+
+.picker-list {
+  display: grid;
+  gap: 10px;
+}
+
+.picker-item {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  padding: 15px 17px;
+  border: 1px solid rgba(16, 59, 112, 0.1);
+  border-radius: 10px;
+  background: #f6f9fc;
+  color: #17324d;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.picker-item:hover,
+.picker-item:focus-visible {
+  transform: translateY(-2px);
+  background: #eaf3f9;
+}
+
+.picker-item:focus-visible {
+  outline: 3px solid #f5b335;
+  outline-offset: 2px;
+}
+
 .pdf-dialog {
   width: min(100% - 32px, 1100px);
   height: min(90vh, 850px);
@@ -123,10 +212,40 @@ body {
   border-radius: 12px;
   color: #17324d;
   box-shadow: 0 20px 60px rgba(5, 25, 45, 0.35);
+  animation: dialog-appear 260ms ease-out;
 }
 
 .pdf-dialog::backdrop {
   background: rgba(4, 20, 36, 0.78);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  animation: backdrop-appear 260ms ease-out;
+}
+
+@keyframes dialog-appear {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes backdrop-appear {
+  from {
+    background: rgba(4, 20, 36, 0);
+    -webkit-backdrop-filter: blur(0);
+    backdrop-filter: blur(0);
+  }
+
+  to {
+    background: rgba(4, 20, 36, 0.78);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
 }
 
 .pdf-toolbar {
@@ -206,6 +325,14 @@ body {
     gap: 10px;
   }
 
+  .proposal-picker {
+    padding: 18px;
+  }
+
+  .picker-header {
+    align-items: flex-start;
+  }
+
   .pdf-frame {
     height: calc(100% - 100px);
   }
@@ -214,6 +341,7 @@ body {
     justify-content: space-between;
     width: 100%;
   }
+
 }
 
 @media (max-width: 360px) {
@@ -234,6 +362,7 @@ body {
     gap: 10px;
     font-size: 0.9rem;
   }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -251,5 +380,10 @@ body {
 
   .quick-link {
     transition: none;
+  }
+
+  .pdf-dialog,
+  .pdf-dialog::backdrop {
+    animation: none;
   }
 }

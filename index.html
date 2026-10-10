@@ -11,8 +11,8 @@
   <main>
     <nav class="quick-links" aria-label="Secciones principales">
       <button class="quick-link quick-link-about" type="button" aria-label="Abrir documento: Quién soy" data-pdf="documentos/quien-soy.pdf" data-title="Quién soy"></button>
-      <button class="quick-link quick-link-work" type="button" aria-label="Abrir documento: Gestión" data-pdf="documentos/gestion.pdf" data-title="Gestión"></button>
-      <a class="quick-link quick-link-proposals" href="#propuestas" aria-label="Propuestas"></a>
+      <button class="quick-link quick-link-work" type="button" aria-label="Abrir documentos de propuestas" aria-haspopup="dialog" aria-controls="proposal-picker"></button>
+      <button class="quick-link quick-link-proposals" type="button" aria-label="Abrir documentos de propuestas" aria-haspopup="dialog" aria-controls="proposal-picker"></button>
     </nav>
 
     <section class="hero" aria-label="El progreso se construye con obras">
@@ -21,11 +21,43 @@
       <img class="hero-slide" src="images/banner-3.jpeg" alt="Juan Pablo Cruz junto a maquinaria que construye una carretera">
     </section>
 
+    <dialog class="proposal-picker" id="proposal-picker" aria-labelledby="picker-title">
+      <div class="picker-header">
+        <div>
+          <p class="section-eyebrow">Documentos</p>
+          <h2 id="picker-title">Explora las propuestas</h2>
+        </div>
+        <button class="pdf-close picker-close" type="button">Cerrar</button>
+      </div>
+      <div class="picker-list">
+        <button class="picker-item" type="button" data-pdf="documentos/eje-productividad-empleo.pdf" data-title="Eje Productividad y Empleo">
+          <span class="proposal-title">Eje Productividad y Empleo</span>
+          <span class="proposal-subtitle">Conoce el documento completo de este eje.</span>
+        </button>
+        <button class="picker-item" type="button" data-pdf="documentos/eje-politico-institucional.pdf" data-title="Eje Político Institucional">
+          <span class="proposal-title">Eje Político Institucional</span>
+          <span class="proposal-subtitle">Consulta las propuestas de este eje.</span>
+        </button>
+        <button class="picker-item" type="button" data-pdf="documentos/eje-familia-ciudadania.pdf" data-title="Eje Familia y Ciudadanía">
+          <span class="proposal-title">Eje Familia y Ciudadanía</span>
+          <span class="proposal-subtitle">Consulta las propuestas de este eje.</span>
+        </button>
+        <button class="picker-item" type="button" data-pdf="documentos/cifras-verificables.pdf" data-title="Todas nuestras cifras son verificables">
+          <span class="proposal-title">Todas nuestras cifras son verificables</span>
+          <span class="proposal-subtitle">Abre el documento de respaldo de las cifras.</span>
+        </button>
+        <button class="picker-item" type="button" data-pdf="documentos/eje-agua-ambiente.pdf" data-title="Eje Agua y Ambiente">
+          <span class="proposal-title">Eje Agua y Ambiente</span>
+          <span class="proposal-subtitle">Consulta las propuestas de este eje.</span>
+        </button>
+      </div>
+    </dialog>
+
     <dialog class="pdf-dialog" aria-labelledby="pdf-title">
       <div class="pdf-toolbar">
         <h2 id="pdf-title">Documento</h2>
         <div class="pdf-actions">
-          <a class="pdf-open-link" href="#" target="_blank" rel="noopener"></a>
+          <a class="pdf-open-link" href="#" target="_blank" rel="noopener">Juan Pablo Cruz</a>
           <button class="pdf-close" type="button">Cerrar</button>
         </div>
       </div>
@@ -38,10 +70,24 @@
     const pdfFrame = document.querySelector(".pdf-frame");
     const pdfTitle = document.querySelector("#pdf-title");
     const pdfOpenLink = document.querySelector(".pdf-open-link");
+    const proposalPicker = document.querySelector("#proposal-picker");
+
+    document.querySelectorAll(".quick-link-work, .quick-link-proposals").forEach((button) => {
+      button.addEventListener("click", () => {
+        proposalPicker.showModal();
+      });
+    });
+
+    proposalPicker.querySelector(".picker-close").addEventListener("click", () => {
+      proposalPicker.close();
+    });
 
     document.querySelectorAll("[data-pdf]").forEach((button) => {
       button.addEventListener("click", () => {
         const { pdf, title } = button.dataset;
+        if (button.closest("#proposal-picker")) {
+          proposalPicker.close();
+        }
         pdfTitle.textContent = title;
         pdfFrame.title = title;
         pdfFrame.src = pdf;
@@ -50,7 +96,7 @@
       });
     });
 
-    document.querySelector(".pdf-close").addEventListener("click", () => {
+    pdfDialog.querySelector(".pdf-close").addEventListener("click", () => {
       pdfDialog.close();
     });
 
