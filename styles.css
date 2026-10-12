@@ -103,104 +103,119 @@ body {
   background-position: 96.6% 50%;
 }
 
-.quick-link:hover,
-.quick-link:focus-visible {
+.quick-link-about:hover,
+.quick-link-about:focus-visible {
   transform: translateY(-5px);
   box-shadow: 0 16px 30px rgba(10, 43, 77, 0.2);
 }
 
-.quick-link:focus-visible {
+.quick-link-about:focus-visible {
   outline: 4px solid #f5b335;
   outline-offset: 4px;
 }
 
-.section-eyebrow {
-  margin: 0 0 8px;
-  color: #287cac;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+.quick-link-about:active {
+  transform: translateY(2px) scale(0.985);
+  box-shadow: inset 0 5px 10px rgba(0, 15, 42, 0.3), 0 2px 5px rgba(0, 16, 48, 0.15);
 }
 
-.proposal-title {
-  color: #103b70;
-  font-size: 1.05rem;
-  font-weight: 700;
-  line-height: 1.35;
+.quick-link-proposals {
+  cursor: default;
 }
 
-.proposal-subtitle {
-  color: #61778a;
-  font-size: 0.9rem;
-  line-height: 1.4;
+.quick-link-work {
+  position: relative;
+  isolation: isolate;
+  cursor: default;
 }
 
-.proposal-picker {
-  width: min(calc(100% - 32px), 620px);
-  max-height: min(85vh, 700px);
-  padding: 24px;
-  overflow-y: auto;
-  border: 0;
-  border-radius: 16px;
-  color: #17324d;
-  box-shadow: 0 20px 60px rgba(5, 25, 45, 0.35);
-  animation: dialog-appear 260ms ease-out;
+.quick-link-work::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(3, 25, 58, 0.08), rgba(3, 25, 58, 0.55));
+  content: "";
 }
 
-.proposal-picker::backdrop {
-  background: rgba(4, 20, 36, 0.72);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  animation: backdrop-appear 260ms ease-out;
+.quick-link-work:focus-visible {
+  outline: 4px solid #f5b335;
+  outline-offset: 4px;
 }
 
-.picker-header {
+.axis-links {
+  position: absolute;
+  inset: 7% 7% 24%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: clamp(6px, 1vw, 10px);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.97);
+  transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+}
+
+.quick-link-work:hover .axis-links,
+.quick-link-work:focus-within .axis-links {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.axis-link {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 18px;
-}
-
-.picker-header .section-eyebrow {
-  margin-bottom: 5px;
-}
-
-.picker-header h2 {
-  margin: 0;
-  color: #103b70;
-  font-size: clamp(1.25rem, 4vw, 1.7rem);
-}
-
-.picker-list {
-  display: grid;
-  gap: 10px;
-}
-
-.picker-item {
-  display: grid;
-  gap: 6px;
-  width: 100%;
-  padding: 15px 17px;
-  border: 1px solid rgba(16, 59, 112, 0.1);
-  border-radius: 10px;
-  background: #f6f9fc;
-  color: #17324d;
-  text-align: left;
+  justify-content: center;
+  flex-direction: column;
+  gap: clamp(3px, 0.7vw, 7px);
+  min-width: 0;
+  min-height: 0;
+  padding: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: clamp(9px, 1.3vw, 16px);
+  background: rgba(5, 48, 112, 0.94);
+  color: #fff;
+  font-size: clamp(0.56rem, 0.9vw, 0.78rem);
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: background-color 180ms ease, transform 180ms ease;
+  box-shadow: 0 8px 16px rgba(10, 43, 77, 0.2), inset 0 1px rgba(255, 255, 255, 0.16);
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
 }
 
-.picker-item:hover,
-.picker-item:focus-visible {
-  transform: translateY(-2px);
-  background: #eaf3f9;
+.axis-link-icon {
+  width: clamp(23px, 3.1vw, 38px);
+  height: clamp(23px, 3.1vw, 38px);
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.8;
 }
 
-.picker-item:focus-visible {
+.axis-link-figures {
+  grid-column: 1 / -1;
+}
+
+.axis-link:hover {
+  transform: translateY(-3px);
+  background: rgba(10, 75, 154, 0.98);
+  box-shadow: 0 10px 18px rgba(0, 16, 48, 0.38), inset 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.axis-link:focus-visible {
   outline: 3px solid #f5b335;
-  outline-offset: 2px;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(245, 179, 53, 0.2), 0 10px 20px rgba(10, 43, 77, 0.3);
+}
+
+.axis-link:active {
+  transform: translateY(2px) scale(0.985);
+  background: #052b63;
+  box-shadow: inset 0 5px 10px rgba(0, 15, 42, 0.35), 0 2px 5px rgba(0, 16, 48, 0.2);
 }
 
 .pdf-dialog {
@@ -309,28 +324,52 @@ body {
   }
 
   .quick-links {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "work work"
+      "about proposals";
     width: calc(100% - 24px);
     gap: 8px;
     margin: 20px auto;
+  }
+
+  .quick-link-about {
+    grid-area: about;
+  }
+
+  .quick-link-work {
+    grid-area: work;
+    aspect-ratio: 0.66;
+  }
+
+  .quick-link-proposals {
+    grid-area: proposals;
   }
 
   .quick-link {
     border-radius: 10%;
   }
 
+  .axis-links {
+    inset: 7% 7% 23%;
+  }
+
+  .axis-link {
+    gap: 5px;
+    padding: 8px 5px;
+    border-radius: 14px;
+    font-size: clamp(0.68rem, 2.8vw, 0.9rem);
+  }
+
+  .axis-link-icon {
+    width: clamp(30px, 9vw, 42px);
+    height: clamp(30px, 9vw, 42px);
+  }
+
   .pdf-toolbar {
     align-items: flex-start;
     flex-direction: column;
     gap: 10px;
-  }
-
-  .proposal-picker {
-    padding: 18px;
-  }
-
-  .picker-header {
-    align-items: flex-start;
   }
 
   .pdf-frame {
@@ -344,10 +383,37 @@ body {
 
 }
 
+@media (hover: none), (pointer: coarse) {
+  .quick-link-work .axis-links {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+}
+
 @media (max-width: 360px) {
+  .hero {
+    width: calc(100% - 20px);
+  }
+
   .quick-links {
     width: calc(100% - 16px);
     gap: 5px;
+  }
+
+  .quick-link-work {
+    aspect-ratio: 0.62;
+  }
+
+  .axis-link {
+    gap: 4px;
+    padding: 6px 4px;
+    font-size: 0.66rem;
+  }
+
+  .axis-link-icon {
+    width: 29px;
+    height: 29px;
   }
 
   .pdf-dialog {
@@ -382,8 +448,34 @@ body {
     transition: none;
   }
 
+  .axis-link,
+  .axis-links {
+    transition: none;
+  }
+
   .pdf-dialog,
   .pdf-dialog::backdrop {
     animation: none;
+  }
+}
+
+
+/* --- Barra Inferior (Derechos de Autor) --- */
+.footer-bottom {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 20px 20px;
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #333333;
+  color: #777777;
+  font-size: 14px;
+}
+
+/* --- Media Query para Pantallas Medianas y Grandes (Tablets / PC) --- */
+@media screen and (min-width: 768px) {
+  .footer-section {
+    flex: 1; /* Distribuye el espacio equitativamente entre las 3 columnas */
   }
 }
