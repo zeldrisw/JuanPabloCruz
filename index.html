@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#eef4f8">
+  <title>Juan Pablo Cruz | El progreso se construye con obras</title>
+  <link rel="stylesheet" href="./styles.css?v=12">
+</head>
+<body>
+  <header class="site-header" id="inicio">
+    <div class="header-content">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <span class="brand-name">Juan Pablo Cruz</span>
+        <span class="brand-tagline">El progreso se construye con obras</span>
+      </a>
+      <nav class="header-nav" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#propuestas">Propuestas</a>
+        <a href="#gestion">Gestión</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="El progreso se construye con obras">
+      <img class="hero-slide" src="images/banner-1.jpg" alt="Juan Pablo Cruz saluda junto a obras de construcción">
+      <img class="hero-slide" src="images/banner-2.jpeg" alt="Juan Pablo Cruz junto a una carretera en construcción">
+      <img class="hero-slide" src="images/banner-3.jpeg" alt="Juan Pablo Cruz junto a maquinaria que construye una carretera">
+    </section>
+
+    <section class="campaign-gallery" id="propuestas" aria-label="Propuestas por eje">
+      <img src="images/1-ejes-tecnicos.jpeg" alt="Vialidad: impulso a la conectividad provincial">
+      <img src="images/2-vialidad.jpeg" alt="Cuatro ejes técnicos para una nueva etapa">
+      <img src="images/3-produccion.jpeg" alt="Producción agropecuaria">
+      <img src="images/4-turismo.jpeg" alt="Turismo sostenible">
+      <img src="images/5-riego.jpeg" alt="Riego y gestión del agua">
+    </section
+
+    <nav class="quick-links" id="gestion" aria-label="Secciones principales">
+      <button class="quick-link quick-link-about" type="button" aria-label="Abrir documento: Quién soy" data-pdf="documentos/quien-soy.pdf" data-title="Quién soy"></button>
+      <section class="quick-link quick-link-work" aria-label="Gestión: documentos por eje" role="group" tabindex="0">
+        <nav class="axis-links" aria-label="Documentos por eje">
+          <button class="axis-link" type="button" aria-haspopup="dialog" aria-controls="pdf-dialog" data-pdf="documentos/eje-productividad-empleo.pdf" data-title="Eje Productividad y Empleo">
+            <svg class="axis-link-icon" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M7 39h34M12 35v-9h7v9M23 35V17h7v18M34 35V9h7v26M8 20l10-8 8 4 13-10M32 6h7v7" />
+              <circle cx="17" cy="9" r="4" />
+              <path d="m14 12-4 5m10-5 4 3" />
+            </svg>
+            <span>Productividad<br>y empleo</span>
+          </button>
+          <button class="axis-link" type="button" aria-haspopup="dialog" aria-controls="pdf-dialog" data-pdf="documentos/eje-familia-ciudadania.pdf" data-title="Eje Familia y Ciudadanía">
+            <svg class="axis-link-icon" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="m5 18 19-12 19 12M9 16v-4h5M7 38h34M11 35v-8a6 6 0 0 1 12 0v8M25 35v-8a6 6 0 0 1 12 0v8" />
+              <circle cx="17" cy="21" r="4" />
+              <circle cx="31" cy="21" r="4" />
+              <circle cx="24" cy="27" r="4" />
+            </svg>
+            <span>Familia y<br>ciudadanía</span>
+          </button>
+          <button class="axis-link" type="button" aria-haspopup="dialog" aria-controls="pdf-dialog" data-pdf="documentos/eje-agua-ambiente.pdf" data-title="Eje Agua y Ambiente">
+            <svg class="axis-link-icon" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M24 5S14 17 14 25a10 10 0 0 0 20 0C34 17 24 5 24 5Z" />
+              <path d="M7 34c4-3 8-3 12 0s8 3 12 0 8-3 12 0M7 41c4-3 8-3 12 0s8 3 12 0 8-3 12 0" />
+            </svg>
+            <span>Eje agua y<br>ambiente</span>
+          </button>
+          <button class="axis-link" type="button" aria-haspopup="dialog" aria-controls="pdf-dialog" data-pdf="documentos/eje-politico-institucional.pdf" data-title="Eje Político Institucional">
+            <svg class="axis-link-icon" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="m5 17 19-11 19 11H5ZM8 40h32M11 19v17M19 19v17M29 19v17M37 19v17M7 43h34" />
+            </svg>
+            <span>Eje político<br>institucional</span>
+          </button>
+          <button class="axis-link axis-link-figures" type="button" aria-haspopup="dialog" aria-controls="pdf-dialog" data-pdf="documentos/cifras-verificables.pdf" data-title="Todas nuestras cifras son verificables">
+            <svg class="axis-link-icon" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M10 6h25a4 4 0 0 1 4 4v23a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4V10a4 4 0 0 1 4-4ZM13 15h17M13 22h17M13 29h11" />
+              <path d="m32 34 4-3 4 3v10l-4-3-4 3V34Z" />
+            </svg>
+            <span>Cifras verificables</span>
+          </button>
+        </nav>
+      </section>
+    </nav>
+
+    <dialog class="pdf-dialog" id="pdf-dialog" aria-labelledby="pdf-title">
+      <div class="pdf-toolbar">
+        <h2 id="pdf-title">Documento</h2>
+        <div class="pdf-actions">
+          <a class="pdf-open-link" href="#" target="_blank" rel="noopener">Juan Pablo Cruz</a>
+          <button class="pdf-close" type="button">Cerrar</button>
+        </div>
+      </div>
+      <iframe class="pdf-frame" title="Documento PDF"></iframe>
+    </dialog>
+  </main>
+
+  <button class="back-to-top" type="button" aria-label="Ir hacia arriba" title="Ir hacia arriba">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 19V5M5.5 11.5 12 5l6.5 6.5" />
+    </svg>
+  </button>
+
+  <script>
+    const backToTop = document.querySelector(".back-to-top");
+
+    window.addEventListener("scroll", () => {
+      backToTop.classList.toggle("is-visible", window.scrollY > 300);
+    }, { passive: true });
+
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    const pdfDialog = document.querySelector(".pdf-dialog");
+    const pdfFrame = document.querySelector(".pdf-frame");
+    const pdfTitle = document.querySelector("#pdf-title");
+    const pdfOpenLink = document.querySelector(".pdf-open-link");
+    document.querySelectorAll("[data-pdf]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const { pdf, title } = button.dataset;
+        pdfTitle.textContent = title;
+        pdfFrame.title = title;
+        pdfFrame.src = pdf;
+        pdfOpenLink.href = pdf;
+        pdfDialog.showModal();
+      });
+    });
+
+    pdfDialog.querySelector(".pdf-close").addEventListener("click", () => {
+      pdfDialog.close();
+    });
+
+    pdfDialog.addEventListener("close", () => {
+      pdfFrame.removeAttribute("src");
+    });
+  </script>
+  <footer class="site-footer">
+    <div class="footer-bottom">
+      <p>&copy; 2026 Nicolas Rodriguez. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>
