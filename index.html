@@ -39,8 +39,12 @@
 
     <nav class="quick-links" id="gestion" aria-label="Secciones principales">
       <button class="quick-link quick-link-about" type="button" aria-label="Abrir documento: Quién soy" data-pdf="documentos/quien-soy.pdf" data-title="Quién soy"></button>
-      <section class="quick-link quick-link-work" aria-label="Gestión: documentos por eje" role="group" tabindex="0">
-        <nav class="axis-links" aria-label="Documentos por eje">
+      <button class="quick-link quick-link-work management-trigger" type="button" aria-expanded="false" aria-controls="axis-links" aria-label="Mostrar documentos de gestión">
+        <span>Gestión</span>
+      </button>
+    </nav>
+
+    <nav class="axis-links" id="axis-links" aria-label="Documentos por eje">
           <button class="axis-link" type="button" aria-haspopup="dialog" aria-controls="pdf-dialog" data-pdf="documentos/eje-productividad-empleo.pdf" data-title="Eje Productividad y Empleo">
             <svg class="axis-link-icon" viewBox="0 0 48 48" aria-hidden="true">
               <path d="M7 39h34M12 35v-9h7v9M23 35V17h7v18M34 35V9h7v26M8 20l10-8 8 4 13-10M32 6h7v7" />
@@ -78,8 +82,6 @@
             </svg>
             <span>Cifras verificables</span>
           </button>
-        </nav>
-      </section>
     </nav>
 
     <dialog class="pdf-dialog" id="pdf-dialog" aria-labelledby="pdf-title">
@@ -102,6 +104,31 @@
 
   <script>
     const backToTop = document.querySelector(".back-to-top");
+    const managementTrigger = document.querySelector(".management-trigger");
+    const axisLinks = document.querySelector(".axis-links");
+
+    managementTrigger.addEventListener("click", () => {
+      const isOpen = axisLinks.classList.toggle("is-open");
+      managementTrigger.setAttribute("aria-expanded", String(isOpen));
+      managementTrigger.querySelector("span").textContent = isOpen ? "Cerrar gestión" : "Gestión";
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!axisLinks.contains(event.target) && !managementTrigger.contains(event.target)) {
+        axisLinks.classList.remove("is-open");
+        managementTrigger.setAttribute("aria-expanded", "false");
+        managementTrigger.querySelector("span").textContent = "Gestión";
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && axisLinks.classList.contains("is-open")) {
+        axisLinks.classList.remove("is-open");
+        managementTrigger.setAttribute("aria-expanded", "false");
+        managementTrigger.querySelector("span").textContent = "Gestión";
+        managementTrigger.focus();
+      }
+    });
 
     window.addEventListener("scroll", () => {
       backToTop.classList.toggle("is-visible", window.scrollY > 300);
@@ -122,6 +149,8 @@
         pdfFrame.title = title;
         pdfFrame.src = pdf;
         pdfOpenLink.href = pdf;
+        axisLinks.classList.remove("is-open");
+        managementTrigger.setAttribute("aria-expanded", "false");
         pdfDialog.showModal();
       });
     });
