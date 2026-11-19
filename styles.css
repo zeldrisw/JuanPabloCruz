@@ -250,14 +250,27 @@ body {
 .quick-link-work {
   position: relative;
   isolation: isolate;
-  cursor: default;
+  overflow: visible;
+  cursor: pointer;
 }
 
 .management-trigger {
-  position: relative;
+  position: absolute;
+  inset: 0;
   display: block;
-  color: #fff;
+  padding: 0;
+  border-radius: inherit;
+  color: transparent;
+  list-style: none;
   cursor: pointer;
+}
+
+.management-trigger::-webkit-details-marker {
+  display: none;
+}
+
+.management-trigger::marker {
+  content: "";
 }
 
 .management-trigger:focus-visible {
@@ -265,7 +278,7 @@ body {
   outline-offset: 4px;
 }
 
-.management-trigger span {
+.management-label {
   position: absolute;
   left: 50%;
   bottom: 12%;
@@ -279,6 +292,15 @@ body {
   white-space: nowrap;
 }
 
+.management-chevron {
+  position: static;
+  margin-left: 4px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: inherit;
+}
+
 .quick-link-work::after {
   position: absolute;
   z-index: -1;
@@ -286,6 +308,7 @@ body {
   border-radius: inherit;
   background: linear-gradient(180deg, rgba(3, 25, 58, 0.08), rgba(3, 25, 58, 0.55));
   content: "";
+  pointer-events: none;
 }
 
 .quick-link-work:focus-visible {
@@ -294,10 +317,10 @@ body {
 }
 
 .axis-links {
-  position: absolute;
-  z-index: 20;
+  position: fixed;
+  z-index: 500;
+  top: 50%;
   left: 50%;
-  top: calc(100% + 12px);
   width: min(520px, calc(100vw - 28px));
   height: 320px;
   padding: 12px;
@@ -311,14 +334,14 @@ body {
   box-shadow: 0 18px 44px rgba(16, 54, 88, 0.26);
   opacity: 0;
   visibility: hidden;
-  transform: translate(-50%, 10px) scale(0.98);
+  transform: translate(-50%, calc(-50% + 10px)) scale(0.98);
   transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
 }
 
-.axis-links.is-open {
+.management-menu[open] .axis-links {
   opacity: 1;
   visibility: visible;
-  transform: translate(-50%, 0) scale(1);
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .axis-link {
@@ -564,11 +587,11 @@ body {
     padding: 8px;
     gap: 6px;
     border-radius: 14px;
-    transform: translateY(10px) scale(0.98);
+    transform: translateY(calc(-50% + 10px)) scale(0.98);
   }
 
-  .axis-links.is-open {
-    transform: translateY(0) scale(1);
+  .management-menu[open] .axis-links {
+    transform: translateY(-50%) scale(1);
   }
 
   .axis-link {
