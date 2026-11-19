@@ -443,7 +443,20 @@ body {
 
   .header-content {
     width: calc(100% - 28px);
-    min-height: 68px;
+    min-height: 98px;
+    padding: 10px 0 8px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .brand {
+    align-items: center;
+    text-align: center;
+  }
+
+  .brand-name {
+    font-size: 1.05rem;
   }
 
   .brand-tagline {
@@ -451,11 +464,18 @@ body {
   }
 
   .header-nav {
-    gap: 10px;
+    width: 100%;
+    justify-content: space-evenly;
+    gap: 6px;
   }
 
   .header-nav a {
-    font-size: 0.76rem;
+    min-width: 82px;
+    padding: 7px 8px;
+    border-radius: 999px;
+    background: rgba(16, 59, 112, 0.07);
+    font-size: 0.78rem;
+    text-align: center;
   }
 
   .back-to-top {
@@ -485,13 +505,14 @@ body {
 
   .quick-links {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: min(72%, 420px);
-    gap: 10px;
+    width: calc(100% - 28px);
+    max-width: 430px;
+    gap: 12px;
     margin: 24px auto;
   }
 
   .quick-link-work {
-    aspect-ratio: 0.66;
+    aspect-ratio: 0.605;
   }
 
   .quick-link {
@@ -499,19 +520,20 @@ body {
   }
 
   .axis-links {
-    inset: 7% 7% 23%;
+    inset: 6% 6% 22%;
+    gap: 5px;
   }
 
   .axis-link {
-    gap: 5px;
-    padding: 8px 5px;
-    border-radius: 14px;
-    font-size: clamp(0.68rem, 2.8vw, 0.9rem);
+    gap: 4px;
+    padding: 5px 3px;
+    border-radius: 10px;
+    font-size: clamp(0.56rem, 2.2vw, 0.72rem);
   }
 
   .axis-link-icon {
-    width: clamp(30px, 9vw, 42px);
-    height: clamp(30px, 9vw, 42px);
+    width: clamp(22px, 7vw, 32px);
+    height: clamp(22px, 7vw, 32px);
   }
 
   .pdf-toolbar {
@@ -540,28 +562,37 @@ body {
 }
 
 @media (max-width: 360px) {
+  .header-content {
+    width: calc(100% - 20px);
+  }
+
+  .header-nav a {
+    min-width: 72px;
+    padding: 7px 5px;
+  }
+
   .hero {
     width: calc(100% - 20px);
   }
 
   .quick-links {
-    width: min(78%, 340px);
-    gap: 7px;
+    width: calc(100% - 20px);
+    gap: 8px;
   }
 
   .quick-link-work {
-    aspect-ratio: 0.62;
+    aspect-ratio: 0.605;
   }
 
   .axis-link {
-    gap: 4px;
-    padding: 6px 4px;
-    font-size: 0.66rem;
+    gap: 3px;
+    padding: 4px 2px;
+    font-size: 0.54rem;
   }
 
   .axis-link-icon {
-    width: 29px;
-    height: 29px;
+    width: 21px;
+    height: 21px;
   }
 
   .pdf-dialog {
